@@ -65,7 +65,7 @@ func (h *EchoHandler) Close() error {
 	logger.Info("handle shutting down")
 	h.closing.Set(true)
 	h.activeConn.Range(func(key, value interface{}) bool {
-		client := value.(*EchoClient)
+		client := key.(*EchoClient)
 		_ = client.Close()
 		return true
 	})

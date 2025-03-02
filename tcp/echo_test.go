@@ -44,8 +44,9 @@ func TestListenAndServe(t *testing.T) {
 		}
 	}
 	_ = conn.Close()
-	for i := 0; i < 10; i++ {
-		closeChan <- struct{}{}
-		time.Sleep(time.Second)
+	for i := 0; i < 5; i++ {
+		_, _ = net.Dial("tcp", addr)
 	}
+	closeChan <- struct{}{}
+	time.Sleep(time.Millisecond * 100)
 }
