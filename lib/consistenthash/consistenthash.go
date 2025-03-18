@@ -32,6 +32,7 @@ func (m *Map) IsEmpty() bool {
 	return len(m.keys) == 0
 }
 
+// AddNode 加入其他节点
 func (m *Map) AddNode(keys ...string) {
 	for _, key := range keys {
 		if key == "" {
